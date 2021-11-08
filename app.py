@@ -30,12 +30,12 @@ tab_selected_style = {
     'border-radius': '15px',
 }
 
-# chunksize = 40000
-#
-# corona = pd.read_csv('https://covid.ourworldindata.org/data/owid-covid-data.csv', chunksize=chunksize, iterator=True)
+chunksize = 10000
+
+corona = pd.read_csv('owid-covid-data.csv', chunksize=chunksize, iterator=True)
 
 # corona = pd.read_csv('https://covid.ourworldindata.org/data/owid-covid-data.csv')
-corona = pd.read_csv('owid-covid-data.csv')
+# corona = pd.read_csv('owid-covid-data.csv')
 
 ########################################################################################################################
 #Filtering World Data
