@@ -37,6 +37,10 @@ corona = pd.read_csv('owid-covid-data.csv', chunksize=chunksize, iterator=True)
 # corona = pd.read_csv('https://covid.ourworldindata.org/data/owid-covid-data.csv')
 # corona = pd.read_csv('owid-covid-data.csv')
 
+corona = pd.concat(corona, ignore_index=True)
+pd.options.mode.chained_assignment=None
+
+corona = corona.copy()
 ########################################################################################################################
 #Filtering World Data
 
@@ -85,9 +89,9 @@ t_D
 ########################################################################################################################
 #Mapping the Spread of Coronavirus COVID-19
 
-df_confirmed = pd.read_csv('C:/Users/MSI-Gaming/Desktop/HND/Data Visualization/IP/time_series_covid19_confirmed_global.csv')
-df_deaths = pd.read_csv('C:/Users/MSI-Gaming/Desktop/HND/Data Visualization/IP/time_series_covid19_deaths_global.csv')
-df_recovered = pd.read_csv('C:/Users/MSI-Gaming/Desktop/HND/Data Visualization/IP/time_series_covid19_recovered_global.csv')
+df_confirmed = pd.read_csv('time_series_covid19_confirmed_global.csv')
+df_deaths = pd.read_csv('time_series_covid19_deaths_global.csv')
+df_recovered = pd.read_csv('time_series_covid19_recovered_global.csv')
 
 id_list = df_confirmed.columns.to_list()[:4]
 vars_list = df_confirmed.columns.to_list()[4:]
