@@ -89,9 +89,17 @@ t_D
 ########################################################################################################################
 #Mapping the Spread of Coronavirus COVID-19
 
-df_confirmed = pd.read_csv('time_series_covid19_confirmed_global.csv')
-df_deaths = pd.read_csv('time_series_covid19_deaths_global.csv')
-df_recovered = pd.read_csv('time_series_covid19_recovered_global.csv')
+df_confirmed = pd.read_csv('time_series_covid19_confirmed_global.csv',chunksize=chunksize, iterator=True)
+df_confirmed = pd.concat(df_confirmed, ignore_index=True)
+pd.options.mode.chained_assignment=None
+
+df_deaths = pd.read_csv('time_series_covid19_deaths_global.csv',chunksize=chunksize, iterator=True)
+df_deaths = pd.concat(df_deaths, ignore_index=True)
+pd.options.mode.chained_assignment=None
+
+df_recovered = pd.read_csv('time_series_covid19_recovered_global.csv', chunksize=chunksize, iterator=True)
+df_recovered = pd.concat(df_recovered, ignore_index=True)
+pd.options.mode.chained_assignment=None
 
 id_list = df_confirmed.columns.to_list()[:4]
 vars_list = df_confirmed.columns.to_list()[4:]
